@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>IMD lookup</title>
+	
+   <script>
+	function lookup () {
+var code = document.getElementById('postcode').value;
+fetch(`https://api.postcodes.io/postcodes/${code}`)
+  .then(function(response) {
+      if (!response.ok) {
+        throw new Error("HTTP error, status = " + response.status);
+      }
+      return response.json();
+    })
+.then(function(json) {
+    document.getElementById("lsoa").innerText = json.result.codes.lsoa
+	document.getElementById("region").innerText = json.result.region
+})
+	event.preventDefault();
+	}
+    </script>	
+	
+	
+</head>
+<body>
+	
+	<h1>IMD lookup</h1>
+	<form id="myform" onsubmit="lookup()">
+	<input type="text" id="postcode" placeholder="Postcode">	
+	<input type="submit" >
+	</form>
+	<div id="lsoa"></div>
+	<div id="region"></div>
+</body>
+</html>
