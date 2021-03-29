@@ -1,8 +1,15 @@
-<!doctype html>
-<html>
+<!Doctype html>
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Check if you are eligible to take part in Generation Green!">	
+<meta property="og:url" content="http://www.generation-green.co.uk" />
+<meta property="og:title" content="Generation Green check" />
+<meta property="og:description" content="Check if you are eligible to take part in Generation Green!" />
+<meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />	
+<link rel="canonical" href="http://www.generation-green.co.uk" />	
+<link rel="icon" type="image/x-icon" href="https://www.scoutadventures.org.uk/sites/default/files/favicon_0.ico" />	
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;900&display=swap" rel="stylesheet">	
 <title>Generation Green</title>
@@ -30,24 +37,28 @@ fetch(`https://api.postcodes.io/postcodes/${code}`)
 .then(function(json) {
 		if (JSON.stringify(JSONObject).includes(json.result.codes.lsoa)) {
 		document.getElementById("imd").style.background = "url(https://jayoram.github.io/green-champion/check.png) center / contain no-repeat #eee"	
+		document.getElementById("register").style.opacity = 1	
 		}
 		else {
 		document.getElementById("imd").style.background = "url(https://jayoram.github.io/green-champion/delete.png) center / contain no-repeat #eee"
 		}
 	  if (JSON.stringify(JSONtown).includes(town)) {
 		document.getElementById("coast").style.background = "url(https://jayoram.github.io/green-champion/check.png) center / contain no-repeat #eee"	
+		 document.getElementById("register").style.opacity = 1	 
 		}
 		else {
 			document.getElementById("coast").style.background = "url(https://jayoram.github.io/green-champion/delete.png) center / contain no-repeat #eee"	
 		}
 	if (JSON.stringify(JSONurban).includes(json.result.codes.admin_district)) {
 		document.getElementById("urban").style.background = "url(https://jayoram.github.io/green-champion/check.png) center / contain no-repeat #eee"	
+		document.getElementById("register").style.opacity = 1	
 		}
 		else {
 			document.getElementById("urban").style.background = "url(https://jayoram.github.io/green-champion/delete.png) center / contain no-repeat #eee"
 		}
 	if (JSON.stringify(JSONregion).includes(json.result.region)) {
 		document.getElementById("region").style.background = "url(https://jayoram.github.io/green-champion/check.png) center / contain no-repeat #eee"		
+		document.getElementById("register").style.opacity = 1	
 		}
 		else {
 			document.getElementById("region").style.background = "url(https://jayoram.github.io/green-champion/delete.png) center / contain no-repeat #eee"	
@@ -64,7 +75,7 @@ fetch(`https://api.postcodes.io/postcodes/${code}`)
 		#coast {background: url(https://jayoram.github.io/green-champion/question.png) center / contain no-repeat #eee;width: 22px; height: 22px;transition: background 0.5s ease;}
 		#region {background: url(https://jayoram.github.io/green-champion/question.png) center / contain no-repeat #eee;width: 22px; height: 22px;transition: background 0.5s ease;}
 		.icon {padding: 5px 5px 5px 0;}
-		.results {margin: 20px; background: url(https://jayoram.github.io/green-champion/green-border.png) left / auto no-repeat #eee; wudth: 400px; height: 200px;}
+		.results {margin: 20px; background: url(https://jayoram.github.io/green-champion/green-border.png) left / cover no-repeat #eee; max-width: 400px; width: 90%; height: 200px;}
 		.header {background: url(https://www.scoutadventures.org.uk/sites/default/files/2021-03/cubs-outdoors-with-anita-rani-jpg.jpg) center 30% / cover no-repeat #eee;width: 100%; height: 200px;transition: background 0.5s ease; text-align: center;}
 		.gradient {background-image: linear-gradient(
     0deg,
@@ -81,19 +92,31 @@ fetch(`https://api.postcodes.io/postcodes/${code}`)
 		h1 {color: #fff;padding: 70px 10px;font-weight: 900;font-size: 20px + 3vw;}
 		h2 {color: #fff; padding: 5px 10px; background-color: #00ae41; width: 200px;text-align: center;font-weight: 900; transform: rotate(-4deg);}
 		.form {margin: 20px;}
-		input {border: none; height: 20px;padding:5px 10px; margin: 10px 10px 10px 20px;}
-		input, lable {display: block;}
+		input {border: none; height: 30px;padding:5px 10px; margin: 10px 10px 10px 20px;display: block;font-size: 16px;}
+		label {display: block;margin-left: 20px;}
 		.item {display: inline-block;}
-		.button {color: #fff; padding: 5px 10px; background-color: #00ae41; font-weight: 900; font-size: 18px; line-height: 1.5; height: auto;transition: opacity 0.5s ease;}
-		.button:hover {opacity: 0.5;}
+		[class^="button"] {color: #fff; padding: 5px 10px; background-color: #00ae41; font-weight: 900; font-size: 18px; line-height: 1.5; height: auto;transition: opacity 0.5s ease; text-align: center; border-radius: 5px;}
+		[class^="button"]:hover {opacity: 0.5;}
 		.green {margin: 50px 10px 30px;}
-		.res {padding: 20px 30px ;}
+		.res {padding: 20px 30px;}
+		sup {font-size: 50%;}
+		a {word-break: break-all}
+		a[href^="mailto"] {color: #000; word-break: normal;}
+		p {margin: 10px 20px;}
+		li {margin: 10px 10px 10px 0;font-size: 14px;}
+		.footnotes {margin-top: 20px;}
+		.wrapper {padding-bottom: 60px;}
+		#register {width: 300px; margin: 10px 10px 10px 20px; opacity: 0;}
+		#register a {color: #fff; text-decoration: none;}
+		.discount {opacity: 0;height: 0;}
+		.footer {background-color: #000;}
 	</style>
 	
 </head>
 <body>
 	<div class="wrapper">
-	<div class="header"><div class="gradient"><h1>Generation Green Check</h1></div></div>
+	<div class="header">
+		<div class="gradient"><h1>Generation Green Check</h1></div></div>
 	<div class="green"><h2>Your details</h2></div>
 	<div class="form">
 	<form id="myform" onsubmit="lookup()">
@@ -112,21 +135,43 @@ fetch(`https://api.postcodes.io/postcodes/${code}`)
 <div class="results">
 	<table class="res">
 	<tr>
-		<td align="center" class="icon"><div id="imd"></div></td><td align="left">In an IMD 1-3 area</td>
+		<td align="center" class="icon"><div id="imd"></div></td><td align="left">In an IMD 1-3 area<sup>1</sup></td>
 		</tr>
 		<tr>
-		<td align="center" class="icon"><div id="urban"></div></td><td align="left">In an Urban area</td>
+		<td align="center" class="icon"><div id="urban"></div></td><td align="left">In an Urban area<sup>2</sup></td>
 		</tr>
 		<tr>
-		<td align="center" class="icon"><div id="coast"></div></td><td align="left">In a Coastal area</td>
+		<td align="center" class="icon"><div id="coast"></div></td><td align="left">In a Coastal area<sup>3</sup></td>
 		</tr>
 	<tr>
-		<td align="center" class="icon"><div id="region"></div></td><td align="left">In the North or Midlands</td>
+		<td align="center" class="icon"><div id="region"></div></td><td align="left">In the North or Midlands<sup>4</sup></td>
 		</tr>	
 	</table>
 </div>
+<div class="buttony" id="register"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=-0KGeT3N9EqWt8YapC6clBg8ILrXG_hFol4X6eTji7lUQTJCOFdTRjZQVTI1RFlHMUZBSVdIVlU1TyQlQCN0PWcu" target="_blank">Register your group</a></div>	
+<div class="footnotes">
+	<ol>
+	<li>IMD stands for Indices of Multiple Deprivation. A postcode checker is available at:<br> <a href="http://imd-by-postcode.opendatacommunities.org/imd/2019">http://imd-by-postcode.opendatacommunities.org/imd/2019</a></li>	
+<li>The Office for National Statistics provide a lookup table matching Local Authority Districts to Rural/Urban
+classifications. To be eligible a Local Authority District must be categorised as either; Urban with City and Town, Urban with Minor Conurbation or Urban with Major Conurbation. The table can be found here:<br>
+<a href="https://www.gov.uk/government/statistics/2011-rural-urban-classification-of-local-authority-and-other-higherlevel-geographies-for-statistical-purposes">https://www.gov.uk/government/statistics/2011-rural-urban-classification-of-local-authority-and-other-higherlevel-geographies-for-statistical-purposes</a></li>
+<li>There are 116 coastal communities supported by the Coastal Community Fund through Coastal Community
+teams. A full list of the communities is available here:<br> <a href="https://www.coastalcommunities.co.uk/coastal-communityteams/">https://www.coastalcommunities.co.uk/coastal-communityteams/</a></li>
+<li>The Office for National Statistics divides England into 9 regions. The relevant regions are E12000001 (North East),E12000002 (North West), E12000003 (Yorkshire and the Humber), E12000004 (East Midlands), and E12000005
+(West Midlands).<br> <a href="https://www.ons.gov.uk/methodology/geography/ukgeographies/administrativegeography/england">https://www.ons.gov.uk/methodology/geography/ukgeographies/administrativegeography/england</a><br><br>Postcode’s that fall within these regions will begin with the following letter(s):<br>
+B, BB, BD, BL, CA, CH, CV, CW, DE, DH, DL, DN, DY, FY, HD, HG, HR, HU, HX, L, LA, LE, LN, LS, M, NE, NG, NN, OL,
+PR, S, SK, SR, ST, TF, TS, WA, WF, WN, WR, WS, WV, YO</li>
+	</ol>	
+<p>	
+
+</p>	
+<div class="green"><h2 style="width:300px;">	
+	Spotted a problem?</h2></div>
+	<p>
+We’ve tried to make the criteria as clear as possible, however if you think we’ve got something wrong or would like further clarification then please <a href="mailto:greenchampions@scoutadventures.org.uk">get in touch</a> and help us to get it right!</p>
+<p>This version of the criteria was last updated on Friday, March 5, 2021</p>
+</div>
 	</div>
-	
-	
+	<div class="footer"><a href="https://www.scoutadventures.org.uk/"><img src="https://www.scoutadventures.org.uk/sites/default/files/inline-images/scouts_logo.png" width="250" style="display: inline-block; height: auto; padding: 20px;" alt="Scout Adventures"></a></div>	
 </body>
 </html>
